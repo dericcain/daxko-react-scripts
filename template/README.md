@@ -1,5 +1,22 @@
 This project was bootstrapped with custom version of [Create React App](https://github.com/facebook/create-react-app).
 
+## Features
+- Nice tech stack
+    - React
+    - TypeScript
+    - MobX
+    - Reach Router
+    - Jest
+    - React Testing Library 
+    - ESLint
+    - Prettier
+    - husky/lint-staged
+- Flexible folder structure
+- MobX root store pattern with Dependency Injection (IoC Container)
+- Git hooks for pre-commit and pre-push that run the linter and tests, respectively
+- Webpack aliases set up for easy path imports
+- CSS Modules with SCSS/CSS
+
 ## Available Scripts
 
 In the project directory, you can run:

@@ -6,7 +6,7 @@ import { Features } from 'react-tiny-feature-switch';
 import features from './features.json';
 import RootStore from 'Stores';
 import App from './app';
-import * as serviceWorker from './serviceWorker';
+import * as serviceWorker from './service-worker';
 import './index.scss';
 
 const store = new RootStore();
