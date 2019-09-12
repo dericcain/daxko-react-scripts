@@ -32,9 +32,9 @@ function verifyNoTypeScript() {
   if (typescriptFiles.length > 0) {
     console.warn(
       chalk.yellow(
-        `We detected TypeScript in your project (${chalk.bold(
-          `src${path.sep}${typescriptFiles[0]}`
-        )}) and created a ${chalk.bold('tsconfig.json')} file for you.`
+        `We detected TypeScript in your project (${ chalk.bold(
+          `src${ path.sep }${ typescriptFiles[0] }`
+        ) }) and created a ${ chalk.bold('tsconfig.json') } file for you.`
       )
     );
     console.warn();
@@ -65,9 +65,9 @@ function verifyTypeScriptSetup() {
   } catch (_) {
     console.error(
       chalk.bold.red(
-        `It looks like you're trying to use TypeScript but do not have ${chalk.bold(
+        `It looks like you're trying to use TypeScript but do not have ${ chalk.bold(
           'typescript'
-        )} installed.`
+        ) } installed.`
       )
     );
     console.error(
@@ -83,8 +83,8 @@ function verifyTypeScriptSetup() {
     console.error(
       chalk.bold(
         'If you are not trying to use TypeScript, please remove the ' +
-          chalk.cyan('tsconfig.json') +
-          ' file from your package root (and any TypeScript files).'
+        chalk.cyan('tsconfig.json') +
+        ' file from your package root (and any TypeScript files).'
       )
     );
     console.error();
@@ -107,8 +107,19 @@ function verifyTypeScriptSetup() {
     strictPropertyInitialization: { suggested: false },
     strict: { suggested: true },
     experimentalDecorators: { suggested: true },
-    // TODO: Enable for v4.0 (#6936)
-    // noFallthroughCasesInSwitch: { suggested: true },
+    baseUrl: { suggested: 'src' },
+    paths: {
+      suggested: {
+        value: {
+          'Src/*': ['*'],
+          'Assets/*': ['assets/*'],
+          'Utils/*': ['utils/*'],
+          'Stores/*': ['stores/*'],
+          'Routes/*': ['routes/*'],
+          'Services/*': ['services/*'],
+        }
+      }
+    },
 
     // These values are required and cannot be changed by the user
     // Keep this in sync with the webpack config
@@ -128,20 +139,6 @@ function verifyTypeScriptSetup() {
     jsx: {
       parsedValue: ts.JsxEmit.React,
       suggested: 'react',
-    },
-    baseUrl: { value: 'src', reason: 'So we can use aliases' },
-    paths: {
-      // This needs work
-      value: {
-        'Src/*': ['*'],
-        'Assets/*': ['assets/*'],
-        'Utils/*': ['utils/*'],
-        'Stores/*': ['stores/*'],
-        'Routes/*': ['routes/*'],
-        'Services/*': ['services/*'],
-      },
-      // We gonna try...
-      reason: 'aliased imports are not supported'
     },
   };
 
@@ -197,7 +194,7 @@ function verifyTypeScriptSetup() {
       );
     }
 
-    console.log(e && e.message ? `${e.message}` : '');
+    console.log(e && e.message ? `${ e.message }` : '');
     process.exit(1);
   }
 
@@ -216,18 +213,18 @@ function verifyTypeScriptSetup() {
       if (parsedCompilerOptions[option] === undefined) {
         appTsConfig.compilerOptions[option] = suggested;
         messages.push(
-          `${coloredOption} to be ${chalk.bold(
+          `${ coloredOption } to be ${ chalk.bold(
             'suggested'
-          )} value: ${chalk.cyan.bold(suggested)} (this can be changed)`
+          ) } value: ${ chalk.cyan.bold(suggested) } (this can be changed)`
         );
       }
     } else if (parsedCompilerOptions[option] !== valueToCheck) {
       appTsConfig.compilerOptions[option] = value;
       messages.push(
-        `${coloredOption} ${chalk.bold(
+        `${ coloredOption } ${ chalk.bold(
           valueToCheck == null ? 'must not' : 'must'
-        )} be ${valueToCheck == null ? 'set' : chalk.cyan.bold(value)}` +
-          (reason != null ? ` (${reason})` : '')
+        ) } be ${ valueToCheck == null ? 'set' : chalk.cyan.bold(value) }` +
+        (reason != null ? ` (${ reason })` : '')
       );
     }
   }
@@ -236,7 +233,7 @@ function verifyTypeScriptSetup() {
   if (parsedTsConfig.include == null) {
     appTsConfig.include = ['src'];
     messages.push(
-      `${chalk.cyan('include')} should be ${chalk.cyan.bold('src')}`
+      `${ chalk.cyan('include') } should be ${ chalk.cyan.bold('src') }`
     );
   }
 
@@ -270,7 +267,7 @@ function verifyTypeScriptSetup() {
   if (!fs.existsSync(paths.appTypeDeclarations)) {
     fs.writeFileSync(
       paths.appTypeDeclarations,
-      `/// <reference types="react-scripts" />${os.EOL}`
+      `/// <reference types="react-scripts" />${ os.EOL }`
     );
   }
 }
