@@ -130,14 +130,16 @@ function verifyTypeScriptSetup() {
       parsedValue: ts.JsxEmit.React,
       suggested: 'react',
     },
+    baseUrl: 'src',
     paths: {
+      // This needs work
       value: {
-        'Src/*': ['src/*'],
-        'Assets/*': ['src/assets/*'],
-        'Utils/*': ['src/utils/*'],
-        'Stores/*': ['src/stores/*'],
-        'Routes/*': ['src/routes/*'],
-        'Services/*': ['src/services/*'],
+        'Src/*': ['*'],
+        'Assets/*': ['assets/*'],
+        'Utils/*': ['utils/*'],
+        'Stores/*': ['stores/*'],
+        'Routes/*': ['routes/*'],
+        'Services/*': ['services/*'],
       },
       // We gonna try...
       reason: 'aliased imports are not supported'
