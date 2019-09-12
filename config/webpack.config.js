@@ -489,10 +489,18 @@ module.exports = function(webpackEnv) {
             {
               test: cssRegex,
               exclude: cssModuleRegex,
-              use: getStyleLoaders({
-                importLoaders: 1,
-                sourceMap: isEnvProduction && shouldUseSourceMap,
-              }),
+              use: [
+                ...getStyleLoaders({
+                  importLoaders: 1,
+                  sourceMap: isEnvProduction && shouldUseSourceMap,
+                }),
+                isEnvProduction && {
+                  loader: '@americanexpress/purgecss-loader',
+                  options: {
+                    paths: [path.join(paths.appSrc, '/**/*.{ts,tsx}')],
+                  },
+                }
+              ].filter(Boolean),
               // Don't consider CSS imports dead code even if the
               // containing package claims to have no side effects.
               // Remove this when webpack adds a warning or an error for this.

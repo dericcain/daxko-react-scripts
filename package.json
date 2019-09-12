@@ -28,6 +28,7 @@
   },
   "types": "./lib/react-app.d.ts",
   "dependencies": {
+    "@americanexpress/purgecss-loader": "^1.0.0",
     "@babel/core": "7.6.0",
     "@svgr/webpack": "4.3.2",
     "@typescript-eslint/eslint-plugin": "1.13.0",
