@@ -2,7 +2,7 @@ import { computed, observable, action } from 'mobx';
 
 import { IRootStore } from './';
 import User, { IUser } from './model/user';
-import { IUserService } from '../services/user';
+import { IUserService } from 'Services/user';
 
 export interface IUserStore {
   user?: IUser;

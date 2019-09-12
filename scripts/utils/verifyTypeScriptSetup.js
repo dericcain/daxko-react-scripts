@@ -130,7 +130,7 @@ function verifyTypeScriptSetup() {
       parsedValue: ts.JsxEmit.React,
       suggested: 'react',
     },
-    baseUrl: 'src',
+    baseUrl: { value: 'src', reason: 'So we can use aliases' },
     paths: {
       // This needs work
       value: {

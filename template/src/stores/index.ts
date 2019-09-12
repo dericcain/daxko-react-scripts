@@ -1,4 +1,4 @@
-import container, { Identifiers } from '../utils/bootstrap';
+import container, { Identifiers } from 'Utils/bootstrap';
 import packageJson from '../../package.json';
 import { IUserStore } from './user';
 

@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import { FeatureToggle, Else } from 'react-tiny-feature-switch';
 
-import Routes from './routes';
+import Routes from 'Routes';
 
 const App: React.FC = () => {
   return (

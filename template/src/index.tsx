@@ -4,7 +4,7 @@ import { Provider } from 'mobx-react';
 import { Features } from 'react-tiny-feature-switch';
 
 import features from './features.json';
-import RootStore from './stores';
+import RootStore from 'Stores';
 import App from './app';
 import * as serviceWorker from './serviceWorker';
 import './index.scss';

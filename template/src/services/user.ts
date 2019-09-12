@@ -1,5 +1,5 @@
-import Service from './index';
-import { IUser } from '../stores/model/user';
+import Service from '.';
+import { IUser } from 'Stores/model/user';
 
 export interface IUserService {
   getById: (id: string) => Promise<IUser>;

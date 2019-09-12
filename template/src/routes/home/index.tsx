@@ -1,7 +1,7 @@
 import React from 'react';
 import { RouteComponentProps } from '@reach/router';
 
-import { connect } from '../../utils/connect';
+import { connect } from 'Utils/connect';
 import styles from './home.module.scss';
 
 // RouteComponentProps comes from @types/reach__router

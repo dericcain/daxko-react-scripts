@@ -1,7 +1,7 @@
 import { Container } from 'tiny-container';
 
-import UserService from '../services/user';
-import UserStore from '../stores/user';
+import UserService from 'Services/user';
+import UserStore from 'Stores/user';
 
 // This is a very small IoC container that is perfect for connecting MobX stores.
 // It makes injecting and testing simple. You can read more about it here:
