@@ -18,7 +18,7 @@ export default class User implements IUser {
 
   public constructor(
     private store: IUserStore,
-    { firstName, lastName, email }: Omit<IUser, 'store'>,
+    { firstName, lastName, email }: Omit<IUser, 'fullName'>,
   ) {
     this.firstName = firstName;
     this.lastName = lastName;

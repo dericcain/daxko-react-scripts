@@ -7,6 +7,7 @@ import { IUserService } from 'Services/user';
 export interface IUserStore {
   user?: IUser;
   isAuthenticated: boolean;
+  createUser: (user: IUser) => void;
 }
 
 export default class UserStore implements IUserStore {
@@ -32,7 +33,7 @@ export default class UserStore implements IUserStore {
   }
 
   @action
-  createUser = (user: IUser) => {
+  createUser = (user: Omit<IUser, 'fullName'>) => {
     this.user = new User(this, user);
   };
 }
