@@ -107,7 +107,6 @@ function verifyTypeScriptSetup() {
     strictPropertyInitialization: { suggested: false },
     strict: { suggested: true },
     experimentalDecorators: { suggested: true },
-    forceConsistentCasingInFileNames: { suggested: true },
     // TODO: Enable for v4.0 (#6936)
     // noFallthroughCasesInSwitch: { suggested: true },
 

@@ -12,11 +12,15 @@ This project was bootstrapped with custom version of [Create React App](https://
     - Prettier
     - husky/lint-staged
 - Flexible folder structure
-- MobX root store pattern with Dependency Injection (IoC Container)
+- MobX root store pattern with Dependency Injection (Tiny IoC Container)
 - Git hooks for pre-commit and pre-push that run the linter and tests, respectively
 - Webpack aliases set up for easy path imports
-- CSS Modules with SCSS/CSS
+- CSS, or SCSS/Sass, or CSS Modules with SCSS/CSS
 - Feature switch for hiding features behind feature flags
+- Code splitting (JS & CSS)
+- Hot reloading
+- Cache busting
+- PWA ready
 
 ## Available Scripts
 
