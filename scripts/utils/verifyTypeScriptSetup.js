@@ -104,6 +104,7 @@ function verifyTypeScriptSetup() {
     skipLibCheck: { suggested: true },
     esModuleInterop: { suggested: true },
     allowSyntheticDefaultImports: { suggested: true },
+    strictPropertyInitialization: { suggested: false },
     strict: { suggested: true },
     experimentalDecorators: { suggested: true },
     forceConsistentCasingInFileNames: { suggested: true },
@@ -129,7 +130,18 @@ function verifyTypeScriptSetup() {
       parsedValue: ts.JsxEmit.React,
       suggested: 'react',
     },
-    paths: { value: undefined, reason: 'aliased imports are not supported' },
+    paths: {
+      value: {
+        'Src/*': ['src/*'],
+        'Assets/*': ['src/assets/*'],
+        'Utils/*': ['src/utils/*'],
+        'Stores/*': ['src/stores/*'],
+        'Routes/*': ['src/routes/*'],
+        'Services/*': ['src/services/*'],
+      },
+      // We gonna try...
+      reason: 'aliased imports are not supported'
+    },
   };
 
   const formatDiagnosticHost = {
