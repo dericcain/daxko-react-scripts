@@ -1,0 +1,9 @@
+@import "../../assets/styles/colors";
+
+// This is a demonstration of how SCSS variables can be exported and used in JS
+:export { codeColor: $codeColor; }
+
+.home {
+  border: 1px dashed $borderColor;
+  padding: 18px;
+}

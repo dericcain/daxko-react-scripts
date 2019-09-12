@@ -12,8 +12,8 @@ export function connect<MappedProps>(mapStoreToProps: (store: Store) => MappedPr
   return function<WrappedProps>(
     WrappedComponent: React.ComponentClass<WrappedProps> | React.StatelessComponent<WrappedProps>,
   ) {
-    return inject(mapStoreToProps)(observer(WrappedComponent)) as React.ComponentClass<
+    return (inject(mapStoreToProps)(observer(WrappedComponent)) as unknown) as React.ComponentClass<
       Partial<WrappedProps>
-      >;
+    >;
   };
 }

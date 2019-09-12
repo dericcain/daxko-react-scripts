@@ -41,11 +41,15 @@ const devDependencies = [
   '@types/react',
   '@types/react-dom',
   '@types/jest',
-  'dart-sass',
+  '@types/webpack-env',
+  // Use dart-sass here instead of node-sass
+  'sass',
   'eslint-plugin-prettier',
   'jest-axe',
   'prettier',
   'typescript',
+  'husky',
+  'lint-staged'
 ];
 
 function isInGitRepository() {
@@ -119,10 +123,11 @@ module.exports = function(
 
   // Setup the script rules
   appPackage.scripts = {
-    start: 'react-scripts start',
     build: 'react-scripts build',
-    test: 'react-scripts test',
     eject: 'react-scripts eject',
+    lint: 'eslint src/**/*.{ts,tsx} --fix',
+    start: 'react-scripts start',
+    test: 'react-scripts test',
   };
 
   // Setup the eslint config
@@ -134,12 +139,29 @@ module.exports = function(
     },
   };
 
+  // Add Prettier to the project
   appPackage.prettier = {
     printWidth: 100,
     trailingComma: 'all',
     singleQuote: true,
     arrowParens: 'avoid',
   };
+
+  // Set up Husky for our git hooks
+  appPackage.husky = {
+    hooks: {
+      'pre-commit': 'lint-staged',
+      'pre-push': 'npm t'
+    }
+  }
+
+  // We only want to lint staged files (files that have changed)
+  appPackage['lint-staged'] = {
+    '*.{ts,tsx}': [
+      'eslint --fix',
+      'git add'
+    ]
+  }
 
   // Setup the browsers list
   appPackage.browserslist = defaultBrowsers;

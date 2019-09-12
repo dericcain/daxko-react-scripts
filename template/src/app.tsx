@@ -1,19 +1,22 @@
 import React, { Suspense } from 'react';
-import { FeatureSwitch, Else } from 'react-tiny-feature-switch';
+import { FeatureToggle, Else } from 'react-tiny-feature-switch';
 
 import Routes from './routes';
 
 const App: React.FC = () => {
   return (
-    <FeatureSwitch features="routes">
+    <FeatureToggle features="routes">
       <Suspense fallback={<div>Loading...</div>}>
         <Routes />
       </Suspense>
       <Else>
-        <div>Looks like you don't have the "routes" feature enabled. Enable it in the features.json file.</div>
+        <div>
+          Looks like you don't have the "routes" feature enabled. Enable it in the features.json
+          file.
+        </div>
       </Else>
-    </FeatureSwitch>
+    </FeatureToggle>
   );
-}
+};
 
 export default App;
