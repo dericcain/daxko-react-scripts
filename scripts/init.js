@@ -209,6 +209,12 @@ module.exports = function(
     }
   }
 
+  // Try this here so that when husky is installed, it will create the git hooks for us
+  if (tryGitInit(appPath)) {
+    console.log();
+    console.log('Initialized a git repository.');
+  }
+
   let command;
   let args, devArgs;
 
@@ -260,11 +266,6 @@ module.exports = function(
   }
 
   verifyTypeScriptSetup();
-
-  if (tryGitInit(appPath)) {
-    console.log();
-    console.log('Initialized a git repository.');
-  }
 
   // Display the most elegant way to cd.
   // This needs to handle an undefined originalDirectory for

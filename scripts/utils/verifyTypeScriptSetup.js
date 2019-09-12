@@ -110,14 +110,12 @@ function verifyTypeScriptSetup() {
     baseUrl: { suggested: 'src' },
     paths: {
       suggested: {
-        value: {
-          'Src/*': ['*'],
-          'Assets/*': ['assets/*'],
-          'Utils/*': ['utils/*'],
-          'Stores/*': ['stores/*'],
-          'Routes/*': ['routes/*'],
-          'Services/*': ['services/*'],
-        }
+        'Src/*': ['*'],
+        'Assets/*': ['assets/*'],
+        'Utils/*': ['utils/*'],
+        'Stores/*': ['stores/*'],
+        'Routes/*': ['routes/*'],
+        'Services/*': ['services/*'],
       }
     },
 
