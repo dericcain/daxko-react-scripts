@@ -114,7 +114,20 @@ module.exports = function(webpackEnv) {
               },
               stage: 3,
             }),
-            // Adds PostCSS Normalize as the reset css with default options,
+            require('@fullhuman/postcss-purgecss')({
+              content: [paths.appHtml, ...glob.sync(path.join(paths.appSrc, '/**/*.{ts,tsx}'), { nodir: true })],
+              extractors: [
+                {
+                  extractor: class {
+                    static extract(content) {
+                      return content.match(/[\w-/:]+(?<!:)/g) || [];
+                    }
+                  },
+                  extensions: ['html', 'ts', 'tsx']
+                }
+              ]
+            }),
+              // Adds PostCSS Normalize as the reset css with default options,
             // so that it honors browserslist config in package.json
             // which in turn let's users customize the target behavior as per their needs.
             postcssNormalize(),
@@ -489,18 +502,10 @@ module.exports = function(webpackEnv) {
             {
               test: cssRegex,
               exclude: cssModuleRegex,
-              use: [
-                ...getStyleLoaders({
-                  importLoaders: 1,
-                  sourceMap: isEnvProduction && shouldUseSourceMap,
-                }),
-                isEnvProduction && {
-                  loader: '@americanexpress/purgecss-loader',
-                  options: {
-                    paths: [path.join(paths.appSrc, '/**/*.{ts,tsx}')],
-                  },
-                }
-              ].filter(Boolean),
+              use: getStyleLoaders({
+                importLoaders: 1,
+                sourceMap: isEnvProduction && shouldUseSourceMap,
+              }),
               // Don't consider CSS imports dead code even if the
               // containing package claims to have no side effects.
               // Remove this when webpack adds a warning or an error for this.

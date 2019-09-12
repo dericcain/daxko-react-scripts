@@ -16,6 +16,7 @@ This project was bootstrapped with custom version of [Create React App](https://
 - Git hooks for pre-commit and pre-push that run the linter and tests, respectively
 - Webpack aliases set up for easy path imports
 - CSS Modules with SCSS/CSS
+- Feature switch for hiding features behind feature flags
 
 ## Available Scripts
 
