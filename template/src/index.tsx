@@ -9,7 +9,7 @@ import App from './app';
 import * as serviceWorker from './service-worker';
 import './index.scss';
 
-const store = new RootStore();
+const store = new RootStore(window.fetch);
 
 const rootElement = document.getElementById('root');
 

@@ -11,29 +11,16 @@ export interface IUserStore {
 }
 
 export default class UserStore implements IUserStore {
-  private rootStore: IRootStore;
-
-  private userService: IUserService;
-
   @observable public user: IUser;
 
-  public constructor({
-    rootStore,
-    userService,
-  }: {
-    rootStore: IRootStore;
-    userService: IUserService;
-  }) {
-    this.rootStore = rootStore;
-    this.userService = userService;
-  }
+  public constructor(private rootStore: IRootStore, private userService: IUserService) {}
 
-  @computed get isAuthenticated() {
+  @computed public get isAuthenticated() {
     return !!this.user;
   }
 
   @action
-  createUser = (user: Omit<IUser, 'fullName'>) => {
+  public createUser = (user: Omit<IUser, 'fullName'>) => {
     this.user = new User(this, user);
   };
 }

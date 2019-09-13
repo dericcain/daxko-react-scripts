@@ -12,7 +12,7 @@ This project was bootstrapped with custom version of [Create React App](https://
     - Prettier
     - husky/lint-staged
 - Flexible folder structure
-- MobX root store pattern with Dependency Injection (Tiny IoC Container)
+- MobX root store pattern with Dependency Injection for easy testing
 - Git hooks for pre-commit and pre-push that run the linter and tests, respectively
 - Webpack aliases set up for easy path imports
 - CSS, or SCSS/Sass, or CSS Modules with SCSS/CSS
@@ -57,12 +57,13 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## Aliases
 There are some helpful aliases set up for use so that paths don't get too long when importing
-- src: `Src`'
-- src/assets: `Assets`'
-- src/routes: `Routes`'
-- src/services: `Services`'
-- src/stores: `Stores`'
-- src/utils: `Utils`'
+- src: `Src`
+- src/assets: `Assets`
+- src/routes: `Routes`
+- src/services: `Services`
+- src/components: `Components`
+- src/stores: `Stores`
+- src/utils: `Utils`
 
 You can use them like so...
 ```js

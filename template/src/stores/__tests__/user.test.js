@@ -7,7 +7,15 @@ describe('User Store', () => {
     email: 'jon.snow@gmail.com',
   };
 
-  const store = new RootStore();
+  const valueThatFetchShouldReturn = [];
+  // This can be extracted into a common file so that all tests can share it. Then API calls are
+  // easy to mock and return whatever values the API would return.
+  const mockFetch = jest.fn().mockImplementation(() =>
+    Promise.resolve({
+      json: () => Promise.resolve(valueThatFetchShouldReturn),
+    }),
+  );
+  const store = new RootStore(mockFetch);
 
   it('should return false for authenticated user if there is no user', () => {
     expect(store.userStore.isAuthenticated).toBe(false);

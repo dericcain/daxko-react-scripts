@@ -64,6 +64,7 @@ module.exports = (resolve, rootDir, isEjecting) => {
       '^Routes(.*)$': '<rootDir>/src/routes$1',
       '^Stores(.*)$': '<rootDir>/src/stores$1',
       '^Services(.*)$': '<rootDir>/src/services$1',
+      '^Components(.*)$': '<rootDir>/src/components$1',
     },
     moduleFileExtensions: [...paths.moduleFileExtensions, 'node'].filter(
       ext => !ext.includes('mjs')

@@ -1,6 +1,6 @@
-import container, { Identifiers } from 'Utils/bootstrap';
 import packageJson from '../../package.json';
-import { IUserStore } from './user';
+import UserStore, { IUserStore } from './user';
+import UserService from '../services/user';
 
 export interface IRootStore {
   appVersion: string;
@@ -10,8 +10,10 @@ export interface IRootStore {
 export default class RootStore implements IRootStore {
   public userStore: IUserStore;
 
-  public constructor() {
-    this.userStore = container.get(Identifiers.UserStore, { rootStore: this });
+  public constructor(fetch) {
+    // Glue everything together here so that when stores need to be tested, the dependencies can
+    // be mocked very easily
+    this.userStore = new UserStore(this, new UserService(fetch));
   }
 
   public get appVersion() {

@@ -30,7 +30,6 @@ const deps = [
   'react',
   'react-dom',
   'react-tiny-feature-switch',
-  'tiny-container',
 ];
 
 const devDependencies = [

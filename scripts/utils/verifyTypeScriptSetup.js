@@ -112,6 +112,7 @@ function verifyTypeScriptSetup() {
       suggested: {
         'Src/*': ['*'],
         'Assets/*': ['assets/*'],
+        'Components/*': ['components/*'],
         'Utils/*': ['utils/*'],
         'Stores/*': ['stores/*'],
         'Routes/*': ['routes/*'],
