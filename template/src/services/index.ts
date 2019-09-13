@@ -11,7 +11,7 @@ export default abstract class Service implements IService {
 
   protected clientSecret = '';
 
-  public constructor(protected fetch) {}
+  public constructor(protected request: typeof fetch) {}
 
   public get key() {
     return `client_id=${this.clientId}&client_secret=${this.clientSecret}`;

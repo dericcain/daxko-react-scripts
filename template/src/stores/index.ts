@@ -10,10 +10,10 @@ export interface IRootStore {
 export default class RootStore implements IRootStore {
   public userStore: IUserStore;
 
-  public constructor(fetch) {
+  public constructor(request: typeof fetch) {
     // Glue everything together here so that when stores need to be tested, the dependencies can
     // be mocked very easily
-    this.userStore = new UserStore(this, new UserService(fetch));
+    this.userStore = new UserStore(this, new UserService(request));
   }
 
   public get appVersion() {

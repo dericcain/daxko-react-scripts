@@ -3,7 +3,7 @@ import { RouteComponentProps } from '@reach/router';
 
 import { connect } from 'Utils/connect';
 import styles from './home.module.scss';
-import Button, { ButtonTypes } from 'Components/button';
+import Button, { ButtonType } from 'Components/button';
 
 // RouteComponentProps comes from @types/reach__router
 type HomeProps = RouteComponentProps & {
@@ -18,8 +18,9 @@ const Home: React.FC<HomeProps> = ({ appVersion }) => (
   <div className={styles.home}>
     <h4>Your app is bootstrapped and ready to go...</h4>
     <code style={{ color: styles.codeColor }}>App version: {appVersion}</code>
+    <hr />
     <Button onClick={onClick}>Click me!</Button>
-    <Button onClick={onClick} type={ButtonTypes.Primary}>Click me too!</Button>
+    <Button onClick={onClick} type={ButtonType.Primary}>Click me too!</Button>
   </div>
 );
 
