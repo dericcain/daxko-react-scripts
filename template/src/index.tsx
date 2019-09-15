@@ -2,14 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'mobx-react';
 import { Features } from 'react-tiny-feature-switch';
+import axios from 'axios';
 
 import features from './features.json';
 import RootStore from 'Stores';
+import Request from 'Utils/request';
 import App from './app';
 import * as serviceWorker from './service-worker';
 import './index.scss';
 
-const store = new RootStore(window.fetch);
+const axiosInstance = axios.create({
+  baseURL: process.env.DAXKO_APP_API_URL
+})
+
+const store = new RootStore(new Request(axiosInstance));
 
 const rootElement = document.getElementById('root');
 

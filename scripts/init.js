@@ -25,6 +25,7 @@ const verifyTypeScriptSetup = require('./utils/verifyTypeScriptSetup');
 
 const deps = [
   '@reach/router',
+  'axios',
   'mobx',
   'mobx-react',
   'react',
