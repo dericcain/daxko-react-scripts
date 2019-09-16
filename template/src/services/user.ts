@@ -6,9 +6,15 @@ export interface IUserService {
 }
 
 export default class UserService extends Service implements IUserService {
+  protected path = '/users';
+
   public getById = async (id: string): Promise<IUser> => {
-    const result = await this.request(`${this.basePath}/user/${id}`);
+    // Axios should be configured to already have the base path. See ./utils/request
+    const result = await this.request.get<IUser>(`${this.path}/${id}`);
+
     // Do some data manipulation here...
-    return result.json();
+
+    // Notice the nice autocompletion on "result"
+    return result;
   };
 }
