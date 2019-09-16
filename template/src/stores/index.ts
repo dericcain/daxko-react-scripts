@@ -1,6 +1,6 @@
 import packageJson from '../../package.json';
 import UserStore, { IUserStore } from './user';
-import UserService from '../services/user';
+import UserService from 'Services/user';
 import { IRequest } from 'Utils/request';
 
 export interface IRootStore {
