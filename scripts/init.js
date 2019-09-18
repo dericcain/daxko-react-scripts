@@ -42,9 +42,14 @@ const devDependencies = [
   '@types/react-dom',
   '@types/jest',
   '@types/webpack-env',
+  '@testing-library/cypress',
+  'start-server-and-test',
+  'cypress',
+  'eslint-plugin-cypress',
   // Use dart-sass here instead of node-sass
   'sass',
   'eslint-plugin-prettier',
+  'is-ci',
   'jest-axe',
   'prettier',
   'typescript',
@@ -128,12 +133,19 @@ module.exports = function(
     lint: 'eslint src/**/*.{ts,tsx} --fix',
     start: 'react-scripts start',
     test: 'react-scripts test',
+    ci: 'npm run test && npm run test:e2e',
+    'cy:run': 'cypress run',
+    'cy:open': 'cypress open',
+    'test:e2e': 'is-ci \"test:e2e:run\" \"test:e2e:open\"',
+    'pretest:e2e:run': 'npm run build',
+    'test:e2e:run': 'start-server-and-test start http://localhost:3000 cy:run',
+    'test:e2e:open': 'start-server-and-test start http://localhost:3000 cy:open'
   };
 
   // Setup the eslint config
   appPackage.eslintConfig = {
     extends: ['react-app'],
-    plugins: ['prettier'],
+    plugins: ['cypress', 'prettier'],
     rules: {
       'prettier/prettier': 'error',
     },

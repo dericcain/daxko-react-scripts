@@ -8,12 +8,15 @@ This project was bootstrapped with custom version of [Create React App](https://
     - Reach Router
     - Jest
     - React Testing Library 
+    - Cypress
+    - Cypress Testing Library
     - ESLint
     - Prettier
     - husky/lint-staged
 - Flexible folder structure
 - MobX root store pattern with Dependency Injection for easy testing
 - Git hooks for pre-commit and pre-push that run the linter and tests, respectively
+- CI ready to run unit, integration and end-to-end tests
 - Webpack aliases set up for easy path imports
 - CSS, or SCSS/Sass, or CSS Modules with SCSS/CSS
 - PurgeCSS to remove all unused CSS during build
