@@ -10,7 +10,6 @@ type HomeProps = RouteComponentProps & {
   appVersion: string;
 };
 
-
 export const Home: React.FC<HomeProps> = ({ appVersion }) => {
   const [clicked, updateClicked] = useState(false);
 
@@ -25,6 +24,11 @@ export const Home: React.FC<HomeProps> = ({ appVersion }) => {
       <hr />
       <div>
         <p>Has the button been clicked? {clicked ? 'Yes' : 'No'}</p>
+        <label htmlFor="nothing">
+          This input does nothing. It simply shows off <code>jest-axe</code> and how if you remove
+          this label, the test will fail.
+        </label>
+        <input id="nothing" value="This input does nothing." readOnly />
       </div>
       <Button onClick={onClick}>Click me!</Button>
       <Button onClick={onClick} type={ButtonType.Primary}>

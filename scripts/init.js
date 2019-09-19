@@ -41,6 +41,7 @@ const devDependencies = [
   '@types/react',
   '@types/react-dom',
   '@types/jest',
+  '@types/jest-axe',
   '@types/webpack-env',
   '@testing-library/cypress',
   'start-server-and-test',
