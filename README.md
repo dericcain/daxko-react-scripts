@@ -24,6 +24,7 @@ and MobX. It has quite a few nice features:
 - PurgeCSS to remove all unused CSS during build
 - Feature switch for hiding features behind feature flags
 - Code splitting (JS & CSS)
+- Production profiling and bundle analyzing
 - Hot reloading
 - Cache busting
 - PWA ready

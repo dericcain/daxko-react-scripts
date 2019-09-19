@@ -61,6 +61,27 @@ const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
 
+const isProfiling = Boolean(process.env.PROFILE);
+
+const alias = {
+  // Support React Native Web
+  // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
+  'react-native': 'react-native-web',
+    Src: path.resolve(paths.appSrc),
+    Assets: path.resolve(paths.appSrc, 'assets'),
+    Utils: path.resolve(paths.appSrc, 'utils'),
+    Routes: path.resolve(paths.appSrc, 'routes'),
+    Stores: path.resolve(paths.appSrc, 'stores'),
+    Services: path.resolve(paths.appSrc, 'services'),
+    Components: path.resolve(paths.appSrc, 'components'),
+};
+
+// We want to be able to profile our app in production mode
+if (isProfiling) {
+  alias['react-dom'] = 'react-dom/profile';
+  alias['scheduler/tracing'] = 'scheduler/tracing-profiling';
+}
+
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
 module.exports = function(webpackEnv) {
@@ -310,18 +331,7 @@ module.exports = function(webpackEnv) {
       extensions: paths.moduleFileExtensions
         .map(ext => `.${ext}`)
         .filter(ext => useTypeScript || !ext.includes('ts')),
-      alias: {
-        // Support React Native Web
-        // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
-        'react-native': 'react-native-web',
-        Src: path.resolve(paths.appSrc),
-        Assets: path.resolve(paths.appSrc, 'assets'),
-        Utils: path.resolve(paths.appSrc, 'utils'),
-        Routes: path.resolve(paths.appSrc, 'routes'),
-        Stores: path.resolve(paths.appSrc, 'stores'),
-        Services: path.resolve(paths.appSrc, 'services'),
-        Components: path.resolve(paths.appSrc, 'components'),
-      },
+      alias,
       plugins: [
         // Adds support for installing with Plug'n'Play, leading to faster installs and adding
         // guards against forgotten dependencies and such.

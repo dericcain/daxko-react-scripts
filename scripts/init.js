@@ -55,7 +55,8 @@ const devDependencies = [
   'prettier',
   'typescript',
   'husky',
-  'lint-staged'
+  'lint-staged',
+  'source-map-explorer'
 ];
 
 function isInGitRepository() {
@@ -129,16 +130,18 @@ module.exports = function(
 
   // Setup the script rules
   appPackage.scripts = {
+    analyze: `source-map-explorer 'build/static/js/*.js'`,
     build: 'react-scripts build',
+    ci: 'cross-env CI=true npm run test && npm run test:e2e:headless',
+    'cy': 'cypress open',
+    'cy:headless': 'cypress run',
     eject: 'react-scripts eject',
     lint: 'eslint src/**/*.{ts,tsx} --fix',
+    profile: 'cross-env PROFILE=true npm run build && npx serve -s build',
     start: 'react-scripts start',
     test: 'react-scripts test',
-    ci: 'cross-env CI=true npm run test && npm run test:e2e:headless',
-    'cy:headless': 'cypress run',
-    'cy': 'cypress open',
+    'test:e2e': 'start-server-and-test start http://localhost:3000 cy',
     'test:e2e:headless': 'start-server-and-test start http://localhost:3000 cy:headless',
-    'test:e2e': 'start-server-and-test start http://localhost:3000 cy'
   };
 
   // Setup the eslint config
@@ -167,7 +170,7 @@ module.exports = function(
       'pre-commit': 'lint-staged',
       'pre-push': 'npm t'
     }
-  }
+  };
 
   // We only want to lint staged files (files that have changed)
   appPackage['lint-staged'] = {
@@ -175,7 +178,7 @@ module.exports = function(
       'eslint --fix',
       'git add'
     ]
-  }
+  };
 
   // Setup the browsers list
   appPackage.browserslist = defaultBrowsers;
