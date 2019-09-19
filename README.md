@@ -28,6 +28,10 @@ and MobX. It has quite a few nice features:
 - Cache busting
 - PWA ready
 
+## Installation
+
+`create-react-app <name-of-app> --scripts-version daxko-react-scripts`
+
 This package includes scripts and configuration used by [Create React App](https://github.com/facebook/create-react-app).<br>
 Please refer to its documentation:
 
