@@ -136,7 +136,7 @@ module.exports = function(
     'cy': 'cypress open',
     'cy:headless': 'cypress run',
     eject: 'react-scripts eject',
-    lint: 'eslint src/**/*.{ts,tsx} --fix',
+    lint: 'eslint --ext .ts,.tsx ./src --fix',
     profile: 'cross-env PROFILE=true npm run build && npx serve -s build',
     start: 'react-scripts start',
     test: 'react-scripts test',
