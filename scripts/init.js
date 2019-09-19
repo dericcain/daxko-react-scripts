@@ -137,7 +137,8 @@ module.exports = function(
     'cy:headless': 'cypress run',
     eject: 'react-scripts eject',
     lint: 'eslint --ext .ts,.tsx ./src --fix',
-    profile: 'cross-env PROFILE=true npm run build && npx serve -s build',
+    // FIXME: Needs webpack work
+    // profile: 'cross-env PROFILE=true npm run build && npx serve -s build',
     start: 'react-scripts start',
     test: 'react-scripts test',
     'test:e2e': 'start-server-and-test start http://localhost:3000 cy',
