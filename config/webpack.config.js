@@ -78,7 +78,7 @@ const alias = {
 
 // We want to be able to profile our app in production mode
 if (isProfiling) {
-  alias['react-dom'] = 'react-dom/profile';
+  alias['react-dom$'] = 'react-dom/profile';
   alias['scheduler/tracing'] = 'scheduler/tracing-profiling';
 }
 
