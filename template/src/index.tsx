@@ -12,8 +12,8 @@ import * as serviceWorker from './service-worker';
 import './index.scss';
 
 const axiosInstance = axios.create({
-  baseURL: process.env.DAXKO_APP_API_URL
-})
+  baseURL: process.env.DAXKO_APP_API_URL,
+});
 
 const store = new RootStore(new Request(axiosInstance));
 
