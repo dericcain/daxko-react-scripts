@@ -1,7 +1,7 @@
 import axios, { AxiosStatic } from 'axios';
 
-import RootStore from 'Stores';
-import Request from 'Utils/request';
+import { RootStore } from 'Stores';
+import { Request } from 'Utils/request';
 
 interface AxiosMock extends AxiosStatic {
   mockImplementation: Function;
@@ -40,6 +40,6 @@ describe('User Store', () => {
   });
 
   it('should return the users full name', () => {
-    expect(store.userStore.user!.fullName).toBe(`${user.firstName} ${user.lastName}`);
+    expect(store.userStore.user.fullName).toBe(`${user.firstName} ${user.lastName}`);
   });
 });

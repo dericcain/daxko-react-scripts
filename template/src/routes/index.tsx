@@ -5,7 +5,7 @@ import { Router } from '@reach/router';
 // @see: https://webpack.js.org/guides/code-splitting/
 const Home = lazy(() => import(/* webpackChunkName: "home" */ './home'));
 
-export default function() {
+export function Routes() {
   return (
     <Router>
       <Home path="/" />

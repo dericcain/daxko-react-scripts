@@ -1,15 +1,10 @@
 import packageJson from '../../package.json';
-import UserStore, { IUserStore } from './user';
-import UserService from 'Services/user';
+import { UserStore } from './user';
+import { UserService } from 'Services/user';
 import { IRequest } from 'Utils/request';
 
-export interface IRootStore {
-  appVersion: string;
-  userStore: IUserStore;
-}
-
-export default class RootStore implements IRootStore {
-  public userStore: IUserStore;
+export class RootStore {
+  public userStore: UserStore;
 
   public constructor(request: IRequest) {
     // Glue everything together here so that when stores need to be tested, the dependencies can

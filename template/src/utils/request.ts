@@ -12,7 +12,7 @@ export interface IRequest {
   delete<T>(url: string): Promise<T>;
 }
 
-export default class Request implements IRequest {
+export class Request implements IRequest {
   public constructor(private transport: AxiosInstance) {}
 
   private convertParamsToQuery(params: Params): string {

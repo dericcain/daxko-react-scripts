@@ -1,25 +1,17 @@
 import { observable, computed } from 'mobx';
 
-import { IUserStore } from '../user';
+import { UserStore } from '../user';
 
-export interface IUser {
-  firstName: string;
-  lastName: string;
-  email: string;
-  fullName: string;
-}
+export type UserArgs = Omit<User, 'store' | 'fullName'>;
 
-export default class User implements IUser {
-  @observable public firstName = '';
+export class User {
+  @observable public firstName?: string = '';
 
-  @observable public lastName = '';
+  @observable public lastName?: string = '';
 
-  @observable public email = '';
+  @observable public email?: string = '';
 
-  public constructor(
-    private store: IUserStore,
-    { firstName, lastName, email }: Omit<IUser, 'fullName'>,
-  ) {
+  public constructor(private store: UserStore, { firstName, lastName, email }: UserArgs) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.email = email;

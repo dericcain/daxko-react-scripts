@@ -1,26 +1,20 @@
 import { computed, observable, action } from 'mobx';
 
-import { IRootStore } from './';
-import User, { IUser } from './model/user';
-import { IUserService } from 'Services/user';
+import { RootStore } from './';
+import { User, UserArgs } from './model/user';
+import { UserService } from 'Services/user';
 
-export interface IUserStore {
-  user?: IUser;
-  isAuthenticated: boolean;
-  createUser: (user: IUser) => void;
-}
+export class UserStore {
+  @observable public user: User;
 
-export default class UserStore implements IUserStore {
-  @observable public user: IUser;
-
-  public constructor(private rootStore: IRootStore, private userService: IUserService) {}
+  public constructor(private rootStore: RootStore, private userService: UserService) {}
 
   @computed public get isAuthenticated() {
     return !!this.user;
   }
 
   @action
-  public createUser = (user: Omit<IUser, 'fullName'>) => {
+  public createUser = (user: UserArgs) => {
     this.user = new User(this, user);
   };
 }

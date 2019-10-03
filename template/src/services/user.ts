@@ -1,16 +1,12 @@
-import Service from '.';
-import { IUser } from 'Stores/model/user';
+import { Service } from '.';
+import { User } from 'Stores/model/user';
 
-export interface IUserService {
-  getById: (id: string) => Promise<IUser>;
-}
-
-export default class UserService extends Service implements IUserService {
+export class UserService extends Service {
   protected path = '/users';
 
-  public getById = async (id: string): Promise<IUser> => {
+  public getById = async (id: string): Promise<User> => {
     // Axios should be configured to already have the base path. See ./utils/request
-    const result = await this.request.get<IUser>(`${this.path}/${id}`);
+    const result = await this.request.get<User>(`${this.path}/${id}`);
 
     // Do some data manipulation here...
 

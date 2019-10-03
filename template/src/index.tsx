@@ -5,9 +5,9 @@ import { Features } from 'react-tiny-feature-switch';
 import axios from 'axios';
 
 import features from './features.json';
-import RootStore from 'Stores';
-import Request from 'Utils/request';
-import App from './app';
+import { RootStore } from 'Stores';
+import { Request } from 'Utils/request';
+import { App } from './app';
 import * as serviceWorker from './service-worker';
 import './index.scss';
 
