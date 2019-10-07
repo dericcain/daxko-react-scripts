@@ -1,6 +1,6 @@
 // This is a good base class for any request library. If another library is used, just swap out the
 // parts to make it work
-import { Method, AxiosRequestConfig, AxiosInstance } from 'axios';
+import axios, { Method, AxiosRequestConfig, AxiosInstance, CancelTokenSource } from 'axios';
 
 type Params = { [k: string]: any };
 
@@ -10,9 +10,14 @@ export interface IRequest {
   patch<T>(url: string, params: Params): Promise<T>;
   put<T>(url: string, params: Params): Promise<T>;
   delete<T>(url: string): Promise<T>;
+  cancel(url: string): void;
 }
 
 export class Request implements IRequest {
+  private static cancelable = axios.CancelToken;
+
+  private cancelTokens: Map<string, CancelTokenSource> = new Map();
+
   public constructor(private transport: AxiosInstance) {}
 
   private convertParamsToQuery(params: Params): string {
@@ -33,6 +38,10 @@ export class Request implements IRequest {
     }
 
     requestConfig.url = url;
+    const cancelTokenSource = Request.cancelable.source();
+    // Create a cancel token
+    this.cancelTokens.set(url, cancelTokenSource);
+    requestConfig.cancelToken = cancelTokenSource.token;
 
     try {
       const { data } = await this.transport(requestConfig);
@@ -61,5 +70,14 @@ export class Request implements IRequest {
 
   public delete<T>(url: string): Promise<T> {
     return this.baseRequest<T>('delete', url);
+  }
+
+  public cancel(url: string): void {
+    const cancelToken = this.cancelTokens.get(url);
+    if (cancelToken) {
+      cancelToken.cancel(`The request to ${url} was cancelled.`);
+      // We want to delete the tokens that are stored so the
+      this.cancelTokens.delete(url);
+    }
   }
 }

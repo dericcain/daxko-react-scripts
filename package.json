@@ -1,10 +1,10 @@
 {
   "name": "daxko-react-scripts",
-  "version": "0.15.4",
+  "version": "0.17.0",
   "description": "Configuration and scripts for Create React App.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dericgw/create-react-app.git",
+    "url": "https://github.com/dericgw/daxko-react-scripts.git",
     "directory": "packages/react-scripts"
   },
   "license": "MIT",
@@ -12,7 +12,7 @@
     "node": ">=8.10"
   },
   "bugs": {
-    "url": "https://github.com/dericgw/create-react-app/issues"
+    "url": "https://github.com/dericgw/daxko-react-scripts/issues"
   },
   "files": [
     "bin",

@@ -13,4 +13,9 @@ export class UserService extends Service {
     // Notice the nice autocompletion on "result"
     return result;
   };
+
+  // The ability exists to be able to cancel requests. The code for this is in utils/request.ts
+  public cancelGetById = (id: string) => {
+    this.request.cancel(`${this.path}/${id}`);
+  };
 }
