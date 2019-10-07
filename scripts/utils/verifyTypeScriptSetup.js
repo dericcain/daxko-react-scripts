@@ -104,7 +104,7 @@ function verifyTypeScriptSetup() {
     skipLibCheck: { suggested: true },
     esModuleInterop: { suggested: true },
     allowSyntheticDefaultImports: { suggested: true },
-    strictPropertyInitialization: { suggested: false },
+    strictPropertyInitialization: { suggested: true },
     strict: { suggested: true },
     experimentalDecorators: { suggested: true },
     baseUrl: { suggested: 'src' },

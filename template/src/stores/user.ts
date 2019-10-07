@@ -5,7 +5,7 @@ import { User, UserArgs } from './model/user';
 import { UserService } from 'Services/user';
 
 export class UserStore {
-  @observable public user: User;
+  @observable public user?: User;
 
   public constructor(private rootStore: RootStore, private userService: UserService) {}
 
