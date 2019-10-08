@@ -194,15 +194,15 @@ inquirer
         return;
       }
       console.log(`  Adding ${cyan(key)} to dependencies`);
-      appPackage.dependencies[key] = ownPackage.dependencies[key];
+      appPackage.devDependencies[key] = ownPackage.dependencies[key];
     });
     // Sort the deps
-    const unsortedDependencies = appPackage.dependencies;
-    appPackage.dependencies = {};
+    const unsortedDependencies = appPackage.devDependencies;
+    appPackage.devDependencies = {};
     Object.keys(unsortedDependencies)
       .sort()
       .forEach(key => {
-        appPackage.dependencies[key] = unsortedDependencies[key];
+        appPackage.devDependencies[key] = unsortedDependencies[key];
       });
     console.log();
 
