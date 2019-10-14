@@ -3,7 +3,7 @@ import { FeatureToggle, Else } from 'react-tiny-feature-switch';
 
 import { Routes } from 'Routes';
 
-export const App: React.FC = () => {
+const App: React.FC = () => {
   return (
     <FeatureToggle features="routes">
       <Suspense fallback={<div>Loading...</div>}>
@@ -18,3 +18,5 @@ export const App: React.FC = () => {
     </FeatureToggle>
   );
 };
+
+export default App;

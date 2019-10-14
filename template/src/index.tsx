@@ -7,7 +7,7 @@ import axios from 'axios';
 import features from './features.json';
 import { RootStore } from 'Stores';
 import { Request } from 'Utils/request';
-import { App } from './app';
+import App from './app';
 import * as serviceWorker from './service-worker';
 import './index.scss';
 
