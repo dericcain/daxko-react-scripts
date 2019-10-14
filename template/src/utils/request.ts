@@ -34,7 +34,7 @@ export class Request implements IRequest {
     if (method.toLowerCase() === 'get' && params) {
       url = `${url}${this.convertParamsToQuery(params)}`;
     } else {
-      requestConfig.params = params;
+      requestConfig.data = params;
     }
 
     requestConfig.url = url;
