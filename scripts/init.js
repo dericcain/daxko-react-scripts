@@ -34,29 +34,30 @@ const deps = [
 ];
 
 const devDependencies = [
-  '@testing-library/react',
+  '@testing-library/cypress',
   '@testing-library/jest-dom',
+  '@testing-library/react',
+  '@testing-library/user-event',
+  '@types/jest',
+  '@types/jest-axe',
   '@types/node',
   '@types/reach__router',
   '@types/react',
   '@types/react-dom',
-  '@types/jest',
-  '@types/jest-axe',
   '@types/webpack-env',
-  '@testing-library/cypress',
-  'start-server-and-test',
+  'cross-env',
   'cypress',
   'eslint-plugin-cypress',
+  'eslint-plugin-prettier',
+  'husky',
+  'jest-axe',
+  'lint-staged',
+  'prettier',
   // Use dart-sass here instead of node-sass
   'sass',
-  'eslint-plugin-prettier',
-  'cross-env',
-  'jest-axe',
-  'prettier',
+  'source-map-explorer',
+  'start-server-and-test',
   'typescript',
-  'husky',
-  'lint-staged',
-  'source-map-explorer'
 ];
 
 function isInGitRepository() {
