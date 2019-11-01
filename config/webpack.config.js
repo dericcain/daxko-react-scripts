@@ -61,13 +61,15 @@ const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
 
-// FIXME: Needs more work...
-// const isProfiling = Boolean(process.env.PROFILE);
-
 const alias = {
   // Support React Native Web
   // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
   'react-native': 'react-native-web',
+  // Allows for better profiling with ReactDevTools
+  ...(isEnvProductionProfile && {
+    'react-dom$': 'react-dom/profiling',
+    'scheduler/tracing': 'scheduler/tracing-profiling',
+  }),
   Src: path.resolve(paths.appSrc),
   Assets: path.resolve(paths.appSrc, 'assets'),
   Utils: path.resolve(paths.appSrc, 'utils'),
@@ -77,18 +79,16 @@ const alias = {
   Components: path.resolve(paths.appSrc, 'components'),
 };
 
-// We want to be able to profile our app in production mode
-// if (isProfiling) {
-  // FIXME: This is not working
-//   alias['react-dom$'] = 'react-dom/profile';
-//   alias['scheduler/tracing'] = 'scheduler/tracing-profiling';
-// }
-
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
 module.exports = function(webpackEnv) {
   const isEnvDevelopment = webpackEnv === 'development';
   const isEnvProduction = webpackEnv === 'production';
+
+  // Variable used for enabling profiling in Production
+// passed into alias object. Uses a flag if passed into the build command
+  const isEnvProductionProfile =
+    isEnvProduction && process.argv.includes('--profile');
 
   // Webpack uses `publicPath` to determine where the app is being served from.
   // It requires a trailing slash, or the file assets will get an incorrect path.
@@ -271,6 +271,9 @@ module.exports = function(webpackEnv) {
             mangle: {
               safari10: true,
             },
+            // Added for profiling in devtools
+            keep_classnames: isEnvProductionProfile,
+            keep_fnames: isEnvProductionProfile,
             output: {
               ecma: 5,
               comments: false,
