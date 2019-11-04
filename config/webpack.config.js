@@ -359,14 +359,6 @@ module.exports = function(webpackEnv) {
       rules: [
         // Disable require.ensure as it's not a standard language feature.
         { parser: { requireEnsure: false } },
-        // Add the ability to parse JSON5 files
-        {
-          // make all files ending in .json5 use the `json5-loader`
-          test: /\.json5$/,
-          use: 'json5-loader',
-          type: 'javascript/auto'
-        },
-
         // First, run the linter.
         // It's important to do this before Babel processes the JS.
         {
