@@ -61,24 +61,6 @@ const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
 
-const alias = {
-  // Support React Native Web
-  // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
-  'react-native': 'react-native-web',
-  // Allows for better profiling with ReactDevTools
-  ...(isEnvProductionProfile && {
-    'react-dom$': 'react-dom/profiling',
-    'scheduler/tracing': 'scheduler/tracing-profiling',
-  }),
-  Src: path.resolve(paths.appSrc),
-  Assets: path.resolve(paths.appSrc, 'assets'),
-  Utils: path.resolve(paths.appSrc, 'utils'),
-  Routes: path.resolve(paths.appSrc, 'routes'),
-  Stores: path.resolve(paths.appSrc, 'stores'),
-  Services: path.resolve(paths.appSrc, 'services'),
-  Components: path.resolve(paths.appSrc, 'components'),
-};
-
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
 module.exports = function(webpackEnv) {
@@ -336,7 +318,23 @@ module.exports = function(webpackEnv) {
       extensions: paths.moduleFileExtensions
         .map(ext => `.${ext}`)
         .filter(ext => useTypeScript || !ext.includes('ts')),
-      alias,
+      alias: {
+        // Support React Native Web
+        // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
+        'react-native': 'react-native-web',
+        // Allows for better profiling with ReactDevTools
+        ...(isEnvProductionProfile && {
+          'react-dom$': 'react-dom/profiling',
+          'scheduler/tracing': 'scheduler/tracing-profiling',
+        }),
+        Src: path.resolve(paths.appSrc),
+        Assets: path.resolve(paths.appSrc, 'assets'),
+        Utils: path.resolve(paths.appSrc, 'utils'),
+        Routes: path.resolve(paths.appSrc, 'routes'),
+        Stores: path.resolve(paths.appSrc, 'stores'),
+        Services: path.resolve(paths.appSrc, 'services'),
+        Components: path.resolve(paths.appSrc, 'components'),
+      },
       plugins: [
         // Adds support for installing with Plug'n'Play, leading to faster installs and adding
         // guards against forgotten dependencies and such.
